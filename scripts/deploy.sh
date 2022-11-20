@@ -19,10 +19,10 @@ if [ -d "$DIR" ];
 then
 	python3 -m venv ./venv --prompt django-app-env
 	source venv/bin/activate
-	python3 -m pip install -r requirements.txt
+	python3 -m pip install -r /root/django-app/requirements.txt
 else
   source venv/bin/activate
-  python3 -m pip install -r requirements.txt
+  python3 -m pip install -r /root/django-app/requirements.txt
   sed -i "/ALLOWED_HOSTS/c\ALLOWED_HOSTS = ['$Public_IP']" /root/django-app/djangoapp/settings.py
   nohup python manage.py runserver 0.0.0.0:8000 &>/dev/null &
 fi
